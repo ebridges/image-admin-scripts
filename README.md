@@ -81,3 +81,8 @@ find . -type f -name '*.jpg' ! -wholename '*.AppleDouble*' -exec sha512sum {} \;
 diff --new-line-format="" --unchanged-line-format="" <(sort deduped-list.txt) <(sort jpeg-list.txt)
 ```
 
+* Convert AVI files to MP4
+
+```
+ffmpeg -i in.avi  -copyts -pix_fmt yuv420p out.mp4
+```
