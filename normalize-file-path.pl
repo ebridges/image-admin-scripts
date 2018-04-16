@@ -78,12 +78,13 @@ for(<DATA>){
 	@tag_vals{@author_tags} = ($author) x (scalar @author_tags);
     }
     my $uuid = &calc_uuid($new_path);
-    my $tmp_old_path = 
+    $tag_vals{'imageuniqueid'} = $uuid;
+
+    ## calculate a unique id & write as tag to file
     $result = &write_tag(
 	&catfile(OLD_ROOT,$old_path),
 	&catfile(NEW_ROOT,$new_path),
-	'imageuniqueid', 
-	$uuid);
+	%tag_vals);
     unless($result) {
 	next;
     }
