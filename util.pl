@@ -92,7 +92,7 @@ sub write_tag {
     my $des = shift;
     my %tag_vals = @_;
 
-    &debug("writing tags [".join(',',%tag_vals)."] from [$des]");
+    &debug("writing tags [".join(',',%tag_vals)."] from [$src] to [$des]");
     
     my $exifTool = new Image::ExifTool;
 
