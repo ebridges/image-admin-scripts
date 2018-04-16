@@ -7,6 +7,15 @@ use File::Path 'make_path';
 
 use constant ISO_8601_FORMAT => '%Y-%m-%dT%H:%M:%S';
 
+
+sub correct_date {
+    my $date = shift;
+    my $correction = shift;
+    my $future = $date->epoch();
+    my $corrected = $future - $correction;
+    return DateTime->from_epoch( epoch => $corrected );
+}
+
 sub create_date {
     my $image = shift;
     my @tags = ('CreateDate', 'DateTimeOriginal');
