@@ -65,8 +65,9 @@ sub iso8601 {
 
 sub parse_date {
     my $dt = shift;
+    my $pattern = shift || ISO_8601_FORMAT;
     my $parser = DateTime::Format::Strptime->new(
-	pattern => ISO_8601_FORMAT,
+	pattern => $pattern,
 	on_error => 'croak',
     );
     return $parser->parse_datetime($dt);
