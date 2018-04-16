@@ -10,6 +10,7 @@ for(<>) {
     die "unable to locate file [$_]: $!\n"
 	unless -e;
     my $file = $_;
+    &debug("getting info on [$file]");
     my $date = &create_date($file);
     my $csum = &calc_checksum($file);
     my $uuid = &calc_uuid($file);
