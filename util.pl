@@ -95,6 +95,7 @@ sub write_tag {
     &debug("writing tags [".join(',',%tag_vals)."] from [$src] to [$des]");
     
     my $exifTool = new Image::ExifTool;
+    $exifTool->Options(DateFormat => ISO_8601_FORMAT);
 
     my $errmsg = undef;
     my ($success) = $exifTool->ExtractInfo($src);
