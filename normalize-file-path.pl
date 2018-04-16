@@ -53,6 +53,14 @@ for(<DATA>){
     ## skip if the file has been processed already
     next
 	if(-e &catfile(NEW_ROOT,$new_path));
+
+    my $archive_path = &catfile('/c/multimedia/videos', $new_path);
+    &debug("checking if file exists in [$archive_path]");
+    if(-e $archive_path) {
+	&debug("Skipping as $old_path is in archive already");
+	&debug('---------------------');
+	next;
+    }
     
     &debug("[$old_path]-->[$new_path]");
 
