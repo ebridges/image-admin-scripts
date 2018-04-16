@@ -11,6 +11,7 @@ use constant DEBUG => 1;
 
 use constant OLD_ROOT => '.';
 use constant NEW_ROOT => 'new';
+use constant CORRECTION => 683225640;
 
 require './util.pl';
 
@@ -25,6 +26,13 @@ for(<DATA>){
     ## extract create date
     my $created = &create_date($old_path);
     &debug("[$old_path] created [$created]");
+
+    my $corrected = undef;
+    if($created->year() > 2018) {
+	$corrected = &correct_date($created, CORRECTION);
+	&debug("$created corrected to $corrected");
+	$created = $corrected;
+    }
     
     ## create new filename acc. to convention
     my $new_path = &format_new_path($old_path, $created);
@@ -44,7 +52,10 @@ for(<DATA>){
 	next;
     }
 
-    ## calculate a unique id & write as tag to file
+    my %tag_vals = ();
+    if($corrected) {
+	@tag_vals{@created_tags} = ($created) x (scalar @created_tags);
+    }
     my $uuid = &calc_uuid($new_path);
     my $tmp_old_path = 
     $result = &write_tag(
