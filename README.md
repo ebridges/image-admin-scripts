@@ -78,7 +78,7 @@ find . -name ".Parent" -exec rm {} \; && find . -name ".AppleDouble" -type d -em
 * List all JPGs under current directory
 
 ```
-find . -type f -name '*.jpg' ! -wholename '*.AppleDouble*'
+find . -type f -iname '*.jpg' ! -wholename '*.AppleDouble*'
 ```
 
 * List all Videos under current directory
