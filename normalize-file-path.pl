@@ -15,6 +15,10 @@ use constant CORRECTION => 683225640;
 
 require './util.pl';
 
+my @created_tags = ('CreateDate', 'DateTimeOriginal');
+my @author_tags = ('XMP:Creator', 'exif:Artist');
+my $author = undef;
+
 for(<DATA>){
     chomp;
     next
@@ -55,6 +59,9 @@ for(<DATA>){
     my %tag_vals = ();
     if($corrected) {
 	@tag_vals{@created_tags} = ($created) x (scalar @created_tags);
+    }
+    if($author) {
+	@tag_vals{@author_tags} = ($author) x (scalar @author_tags);
     }
     my $uuid = &calc_uuid($new_path);
     my $tmp_old_path = 
