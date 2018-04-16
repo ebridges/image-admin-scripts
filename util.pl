@@ -16,6 +16,21 @@ sub correct_date {
     return DateTime->from_epoch( epoch => $corrected );
 }
 
+
+
+sub convert_avi_to_mp4 {
+    my $avi = shift;
+    my $mp4 = shift;
+    `ffmpeg -i $avi -copyts -pix_fmt yuv420p $mp4`;
+#    die("ffmpeg -i $avi -copyts -pix_fmt yuv420p $mp4");
+    if($?) {
+	&error("Error converting $avi to MP4: $!");
+	return undef;
+    } else {
+	return 1;
+    }
+}
+
 sub create_date {
     my $image = shift;
     my @tags = ('CreateDate', 'DateTimeOriginal');
