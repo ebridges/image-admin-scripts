@@ -29,6 +29,12 @@ for(<DATA>){
     
     ## extract create date
     my $created = &create_date($old_path);
+
+    unless($created) {
+	&error("unable to get create date from [$old_path]");
+	next;
+    }
+
     &debug("[$old_path] created [$created]");
 
     my $corrected = undef;
