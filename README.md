@@ -1,19 +1,3 @@
-### To Do
-
-0. dedupe
-1. Sort into appropriate subfolders
-2. Rename filename to standard form.
-3. Assign UUID for each file.
-4. create checksum of file.
-5. output filename, create date, checkum, uuid.
-
-* Deduping
-
-1. Generate a checksum of every file.  Pipe that to `remove-duplicates.pl`.
-2. Output of `remove-duplicates.pl` lists checksum & filename of every file.
-3. Confirm counts of files with lines of output from remove-duplicates.
-
-
 ### Database File
 
 * `image-info.csv`
