@@ -143,7 +143,7 @@ sub mkdirs {
 	&debug("parent directories already exist for [$dir]");
     }
     
-    1;
+    return $new;
 }
 
 sub calc_uuid {
