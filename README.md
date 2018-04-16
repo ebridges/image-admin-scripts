@@ -42,6 +42,24 @@
 
 ### Commands
 
+* Top 20 largest files under current directory, with sizes listed in human-readable format
+
+```
+find . -type f -print0 | xargs -0 du -h | sort -hr | head -20
+```
+
+* Lowercase all files under current directory
+
+```
+find . -type f  ! -wholename '*.AppleDouble*' -exec rename 'y/A-Z/a-z/' {} \;
+```
+
+* Histogram of file types
+
+```
+find . -type f  ! -wholename '*.AppleDouble*' | sed 's/.*\.//' | sort | uniq -c
+```
+
 * Download a bunch of files from S3, preserving directory structure:
 ```
 for i in `cat list.txt ` ; do aws s3 cp s3://cc.roja.media/photos/pictures/$i `dirname $i` ; done
