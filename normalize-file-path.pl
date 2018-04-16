@@ -111,7 +111,7 @@ sub format_new_path {
 	my $time = $created->strftime( '%H%M%S' );
 	my $datetime = $date . 'T' . $time;
 	
-	my $new_path = &format_new_file($dir, $datetime, 1, $suffix);
+	my $new_path = &format_new_file($dir, $datetime, 1, lc($suffix));
 	unless($new_path) {
 	    &error("unable to create new filepath [$new_path] from old path [$old_path]");
 	    return undef;
