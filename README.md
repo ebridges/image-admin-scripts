@@ -80,7 +80,7 @@ find . -type f -name '*.jpg' ! -wholename '*.AppleDouble*' -exec sha512sum {} \;
 * Find lines in file A not in file B
 
 ```
-diff --new-line-format="" --unchanged-line-format="" <(sort deduped-list.txt) <(sort jpeg-list.txt)
+diff --new-line-format="" --unchanged-line-format="" <(sort file-A.txt) <(sort file-B.txt)
 ```
 
 * Convert AVI files to MP4
