@@ -172,9 +172,9 @@ sub type {
     my $file = shift;
     my ($unused_1, $unused_2, $suffix) = &fileparse($_, qr/\.[^.]*/);
     $suffix =~ s/^\.//;
-    return 'image'
+    return 'photos'
         if $suffix =~ /jpg|png/;
-    return 'video'
+    return 'videos'
         if $suffix =~ /mp4|mov|avi/;
     return undef;
 }
