@@ -31,6 +31,21 @@ sub convert_avi_to_mp4 {
     }
 }
 
+
+sub filepath {
+    my $prefix = shift;
+    my $created = shift;
+    my $suffix = lc(shift);
+    my $idx = shift || 1;
+    my $year = $created->strftime( '%Y' );
+    my $date = $created->strftime( '%Y-%m-%d' );
+    my $datetime = $created->strftime( '%Y%m%dT%H%M%S' );
+    my $seq = sprintf('%03d', $idx);
+    my $filepath = "$prefix/$year/$date/$datetime" . '_' . $seq . $suffix;
+    &debug("new filepath: $filepath");
+    return $filepath;
+}
+
 sub create_date {
     my $image = shift;
     my @tags = ('CreateDate', 'DateTimeOriginal');
