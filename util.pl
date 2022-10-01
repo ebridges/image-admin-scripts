@@ -46,6 +46,17 @@ sub filepath {
     return $filepath;
 }
 
+
+sub author {
+    my $image = shift;
+    my @tags = ('XMP:Creator', 'exif:Artist');
+    my $author = &tag($image, @tags);
+
+    &debug("Author: $author");
+    return $author;
+}
+
+
 sub create_date {
     my $image = shift;
     my @tags = ('CreateDate', 'DateTimeOriginal');
